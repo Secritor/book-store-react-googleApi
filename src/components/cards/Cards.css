@@ -1,0 +1,14 @@
+.cards-field {
+
+    width: 929px;
+    height: auto;
+    /* background-color: rgb(155, 155, 155); */
+
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 76px;
+    grid-row-gap: 96px;
+    z-index: 1;
+}

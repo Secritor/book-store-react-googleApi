@@ -1,0 +1,91 @@
+button {
+    border: none;
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: baseline;
+    max-width: 1120px;
+    margin: 50px auto;
+}
+
+.Header-logo {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    color: #1C2A39;
+}
+
+.Header-navigation>a {
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+
+
+    text-decoration: none;
+    color: #5C6A79;
+    margin-right: 40px;
+
+
+}
+
+.Header-navigation>a:hover {
+    color: #1C2A39;
+}
+
+.Header-navigation>a:last-child {
+    margin-right: 0;
+}
+
+
+.active-navigation {
+    color: #1C2A39;
+}
+
+.header-icons {
+    display: flex;
+
+
+}
+
+.header-icons>button {
+    margin-right: 40px;
+}
+
+.header-icons>button:last-child {
+    margin-right: 0px;
+}
+
+/* .icon-user {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.icon-search {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.icon-shop {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+} */
