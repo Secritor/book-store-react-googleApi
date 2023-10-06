@@ -39,7 +39,7 @@ class ApiService{
       for (let i = 0; i < 13; i++) {
         isbn += Math.floor(Math.random() * 10);
       }
-      return console.log(isbn);
+      return isbn;
     }
   
 

@@ -33,22 +33,23 @@ class Card extends Component {
   updateBook = () => {
     // const id = "9781108037129"
     
-    const code = '';
+    const code = Math.floor(Math.random() * (9781108037129 - 9781108000000) + 9781108030000);
     
-
+    console.log(code);
     this.apiService
         .getBookByISBN(code)
         .then(res => {
           this.setState({
             title: res.items[0].volumeInfo.title,
             author: res.items[0].volumeInfo.authors[0],
-            description: res.items[0].volumeInfo.description,
+            description: res.items[0].volumeInfo.description ? `${res.items[0].volumeInfo.description.slice(0, 110)}...` : 'There is no description for this book',
             thumbnail: res.items[0].volumeInfo.imageLinks.thumbnail,
           })
         })
         .catch(err => {
           // handle error
-        });
+        }); 
+      
         
   }
  

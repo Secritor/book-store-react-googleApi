@@ -9,7 +9,11 @@ const Cards = (props) => {
   return (
     <div className="cards-field">
       <Card/>
-    
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
     </div>
 
   )
