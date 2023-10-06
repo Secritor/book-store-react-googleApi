@@ -5,15 +5,11 @@ import ApiService from "../serviсes/ApiServices";
 
 
 const Cards = (props) => {
-  ApiService();
+ 
   return (
     <div className="cards-field">
       <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
+    
     </div>
 
   )

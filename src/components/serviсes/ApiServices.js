@@ -2,23 +2,65 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../card/Card";
 
-const ApiService = () => {
-    const [books, setBooks] = useState([]);
-    const name = 'world';
+class ApiService{
+
+    _apiBase = 'https://www.googleapis.com/books/v1/volumes?q=';
+    _apiKey = 'AIzaSyCl42xB_WLVC_Ikq26U2xnHIyJZ8kr6NSo';
+
+
+    getResource = async (url) => {
+      let res = await fetch(url);
+
+      if(!res.ok) {
+        throw new Error (`Could not fetch ${url}, status ${res.status}`);
+      }
+      return await res.json();
+    } 
+
+    getBooks = () => {
+      return this.getResource(`${this._apiBase}flower+subject:history&maxResults=6&key=${this._apiKey}`);
+    }
+
+    getBook = (maxResults) => {
+      return this.getResource(`${this._apiBase}war+subject:history&maxResults=${maxResults}&key=${this._apiKey}`);
+    }
+
+    getSelectedBook = (category) => {
+      return this.getResource(`${this._apiBase}${category}&maxResults=1&key=${this._apiKey}`);
+    }
+
+    getBookByISBN = (code) => {
+      return this.getResource(`${this._apiBase}isbn:${code}&maxResults=1&key=${this._apiKey}`);
+
+    }
+
+    generateISBN = () => {
+      let isbn = "";
+      for (let i = 0; i < 13; i++) {
+        isbn += Math.floor(Math.random() * 10);
+      }
+      return console.log(isbn);
+    }
   
-    useEffect(() => {
-      const fetchData = async () => {
-        const result = await axios(
-          `https://www.googleapis.com/books/v1/volumes?q=${name}&key=AIzaSyCl42xB_WLVC_Ikq26U2xnHIyJZ8kr6NSo`
-        );
-        console.log(result.data); // выводим полученные данные в консоль
-        // setBooks(result.data.items); // сохраняем полученные данные в состояние
-      };
-      fetchData();
-    }, []);
+
+}
+    // const [books, setBooks] = useState([]);
+    // const name = 'world';
+  
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     const result = await axios(
+    //       // `https://www.googleapis.com/books/v1/volumes?q=${name}&key=AIzaSyCl42xB_WLVC_Ikq26U2xnHIyJZ8kr6NSo`,
+    //       `https://www.googleapis.com/books/v1/volumes?q=war+subject:history&key=AIzaSyCl42xB_WLVC_Ikq26U2xnHIyJZ8kr6NSo`
+    //     );
+    //     console.log(result.data); // выводим полученные данные в консоль
+    //     // setBooks(result.data.items); // сохраняем полученные данные в состояние
+    //   };
+    //   fetchData();
+    // }, []);
   
     // return <Card books={books} />; // передаем полученные данные в компонент с карточками товара
-  };
+  // };
 
 
 
