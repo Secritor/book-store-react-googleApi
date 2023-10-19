@@ -12,7 +12,7 @@ import imgBannerThird from '../../assets/img/banner3.png';
 
 class App extends Component {
   
-  // пока переписан на класс эта хуйня не работает, не видит слайды
+  
   
   
   slides = [
