@@ -5,13 +5,14 @@ import '../filter/Filter.css';
 
 
 const Filter = (props) => {
+
   return (
     <div className="filter">
         <ul className="filter-items">
-          <li className="filter-item filtet-item-active">
+          <li className="filter-item filtet-item-active" >
             Architecture
           </li>
-          <li className="filter-item">
+          <li className="filter-item" >
             Art & Fashion
           </li>
           <li className="filter-item">

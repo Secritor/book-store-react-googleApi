@@ -3,6 +3,7 @@ import '../card/Card.css'
 import cardThumbnail from '../../assets/img/card-cover.png';
 import bookRateStar from '../../assets/icons/Star.svg'
 import ApiService from "../serviсes/ApiServices";
+// import { books } from "../serviсes/ApiServices";
 
 
 class Card extends Component {
@@ -31,31 +32,40 @@ class Card extends Component {
  
 
   updateBook = () => {
-    // const id = "9781108037129"
-    
+    const id = "9781108037129"  
     const code = Math.floor(Math.random() * (9781108037129 - 9781108000000) + 9781108030000);
-    
-    console.log(code);
+
     this.apiService
         .getBookByISBN(code)
         .then(res => {
-          this.setState({
-            title: res.items[0].volumeInfo.title,
-            author: res.items[0].volumeInfo.authors[0],
-            description: res.items[0].volumeInfo.description ? `${res.items[0].volumeInfo.description.slice(0, 110)}...` : 'There is no description for this book',
-            thumbnail: res.items[0].volumeInfo.imageLinks.thumbnail,
-          })
+          this.setState(res)
         })
-        .catch(err => {
-          // handle error
-        }); 
+    // получаю книги по коду isbn
+        
+    // пытаюсь забрать из массива книги и вставить их поочередно в карточки
+        // .getBooks()
+        // .then(res => {
+        //   this.setState(res)
+        // });
+
+
       
+
+    // const book = books[Math.floor(Math.random() * books.length)];
+    // this.setState(book);
+
         
   }
  
 
   render () {
-    const {title, author, description, thumbnail } = this.state;
+    const {
+      title,
+      author,
+      description, 
+      thumbnail
+     } = this.state;
+
     return (
     <div className="card">
           <img className="book-thumbnail" src={thumbnail} alt="card thumbnail" />

@@ -4,7 +4,7 @@ import sliderArrow from '../../assets/icons/arrow.svg'
 
 const Slider = ({slides}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+ 
   const handleJumpToSlide = (index) => {
     if (index === currentSlide) {
       setCurrentSlide(0);
