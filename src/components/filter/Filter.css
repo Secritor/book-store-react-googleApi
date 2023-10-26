@@ -28,7 +28,7 @@ ul {
 
 .filter-item {
     position: relative;
-    margin-top: 23px;
+    margin: 23px 0px 23px 0px;
     display: flex;
     /* justify-content: flex-start; */
 
@@ -61,6 +61,11 @@ ul {
 }
 
 .filtet-item-active {
+
+    position: relative;
+    /* margin-top: 23px; */
+    display: flex;
+
     font-family: Montserrat;
     font-size: 16px;
     font-weight: 700;

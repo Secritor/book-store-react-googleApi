@@ -14,19 +14,22 @@ class Cards extends Component {
 
   render () {
   
-    const { bookList } = this.props
+    const { bookList, onCardClick } = this.props
 
     const renderBooks = (arr) => {
-      const books =  arr.map((book) => { 
+      const books =  arr.map((book, index) => { 
           // Создаю для каждого элемента массива карточку
           return (
             <Card 
-              key={book.id}
+              key={index}
               thumbnail={book.thumbnail}
               author={book.author}
               title={book.title}
               description={book.description}
-
+              ratingsCount={book.ratingsCount}
+              averageRating={book.averageRating}
+              saleInfo={book.saleInfo}
+              onCardClick={onCardClick}
             />
           )
       });
@@ -45,6 +48,7 @@ class Cards extends Component {
     
     const books = bookList && bookList.length > 0 ? renderBooks(bookList) : <p className="select-category">select a category</p>;
     const showLoadMoreBtn = bookList && bookList.length > 0 ? <button className="load-more">Load more</button> : null
+    
     return (
     <div className="cards-field">
       <div className="cards-container">

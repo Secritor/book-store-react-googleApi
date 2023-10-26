@@ -17,8 +17,10 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      category: null,
+      selectedCategory: null,
+      activeCategory: null,
       bookList: [],
+      addedToCart: 0,
     }
   }
  
@@ -33,12 +35,20 @@ class App extends Component {
 
   handleCategoryClick = async (category) => {
     const books = await this.apiService.getSelectedBooks(category);
-    this.setState({
+    this.setState((prevState) => ({
       selectedCategory: category,
-      bookList: books
-    });
+      bookList: books,
+      activeCategory: prevState.selectedCategory === category ? null : category,
+    }));
   }
 
+
+  addedToCart = () => {
+    console.log('click');
+    this.setState({
+      addedToCart: this.state.addedToCart + 1,
+    })
+  }
 
  
     render () {
@@ -47,11 +57,17 @@ class App extends Component {
       return (
         <div className='App'>
           
-          <Header/>
+          <Header addedToCart={this.state.addedToCart}/>
           <Slider slides={this.slides}/>
             <div className='Shop'>
-              <Filter onCategoryClick={this.handleCategoryClick}/>
-              <Cards bookList={this.state.bookList}/>
+              <Filter
+               onCategoryClick={this.handleCategoryClick}
+               activeCategory={this.state.activeCategory}
+               />
+              <Cards
+               bookList={this.state.bookList}
+               onCardClick={this.addedToCart}
+               />
             </div>
           
       

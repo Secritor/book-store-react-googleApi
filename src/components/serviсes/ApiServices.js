@@ -1,3 +1,5 @@
+import noImage from '../../assets/img/no-image-cover.jpg'
+
 
 class ApiService{
 
@@ -19,15 +21,15 @@ class ApiService{
       const res = await this.getResource(`${this._apiBase}flower+subject:history&maxResults=6&key=${this._apiKey}`);
 
       // сюда будем записывать нужные нам данные(локально)
-      this.books = [];
+      // this.books = [];
 
       // перебираю массив внутри обьекта по кол-ву книг и записываю деструктуризированные данные в массив с книгами
-      for (let i = 0; i < res.items.length; i++) {
-        this.books.push(this._transformBooks(res.items[i].volumeInfo));
-      }
+      // for (let i = 0; i < res.items.length; i++) {
+      //   this.books.push(this._transformBooks(res.items[i].volumeInfo));
+      // }
      
-      return this.books;
-     
+      return res;
+      
       
     }
     // получаю массив книг по категории
@@ -43,13 +45,30 @@ class ApiService{
       return this.books;
     }
 
-    // перезаписываю массив удаляя все лишнее 
+    getRandomRatingsCount = (min, max) => {
+      return Math.floor(Math.random() * (max - min) + min)
+    }
+
+
+    renderRating = (rating) => {
+      const fullStars = Math.floor(rating / 1);
+      const halfStar = (rating % 1) >= 0.5 ? '★' : '';
+      const emptyStars = 5 - fullStars - halfStar.length;
+      return '★'.repeat(fullStars) + halfStar + '☆'.repeat(emptyStars);
+    }
+
+
+     // перезаписываю массив удаляя все лишнее 
     _transformBooks = (books) => {
       return {
-            title: books.title ? `${books.title.slice(0, 30)}...` : 'У этой книги нет названия',
-            author: books.authors && books.authors[0] ? books.authors[0] : 'У этой книги не указан автор',
+            id: books.id,
+            title: books.title ? `${books.title.slice(0, 30)}...` : 'No title',
+            author: books.authors && books.authors[0] ? books.authors[0] : 'there is no author',
             description: books.description ? `${books.description.slice(0, 90)}...` : 'There is no description for this book',
-            thumbnail: books.imageLinks && books.imageLinks.thumbnail ? books.imageLinks.thumbnail : 0
+            thumbnail: books.imageLinks && books.imageLinks.thumbnail ? books.imageLinks.thumbnail : noImage,
+            ratingsCount: books.ratingsCount ? `${books.ratingsCount} reviews` : 'no reviews',
+            averageRating: books.averageRating ? this.renderRating(books.averageRating) : '☆☆☆☆☆',
+            saleInfo: books.saleInfo && `$${books.saleInfo.retailPrice}` ? books.saleInfo.retailPrice : null,
       }
     }
   

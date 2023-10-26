@@ -27,7 +27,6 @@ class Filter extends Component {
         'Technology',
         'Travel & Maps',
         ],
-      bookList: []
     };
   }
 
@@ -38,8 +37,9 @@ class Filter extends Component {
   }
 
   render () {
-    const renderFilterItems = this.state.filterItems.map((category) =>
-      <li key={category} className="filter-item" onClick={() => this.handleClick(category)}>{category}</li>
+    const { activeCategory } = this.props
+    const renderFilterItems = this.state.filterItems.map((category, index) =>
+      <li key={index} className={activeCategory === category ? "filtet-item-active" : "filter-item"} onClick={() => this.handleClick(category)}>{category}</li>
     )
       return (
         <div className="filter">

@@ -57,6 +57,7 @@ button {
 }
 
 .header-icons {
+    position: relative;
     display: flex;
 
 
@@ -68,6 +69,30 @@ button {
 
 .header-icons>button:last-child {
     margin-right: 0px;
+}
+
+.header-count {
+    position: absolute;
+    left: 125px;
+    top: 8px;
+    width: 13px;
+    height: 13px;
+    border: none;
+    border-radius: 50%;
+    background-color: #FF353A;
+
+    padding-top: 0.5px;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: center;
+
+    color: #FFFFFF;
+
+
+
 }
 
 /* .icon-user {
