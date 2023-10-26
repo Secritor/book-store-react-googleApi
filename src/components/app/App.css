@@ -15,21 +15,3 @@
   display: flex;
   justify-content: flex-end;
 }
-
-.load-more {
-  width: 176px;
-  height: 45px;
-
-
-
-  border: 1px solid #4C3DB2;
-  font-family: Montserrat;
-  font-size: 8px;
-  font-weight: 700;
-  line-height: 10px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #4C3DB2;
-  margin: 96px 523px 74px 743px;
-
-}

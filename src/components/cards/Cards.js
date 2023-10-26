@@ -3,83 +3,54 @@ import '../cards/Cards.css'
 import '../card/Card.css';
 import ApiService from "../serviсes/ApiServices";
 import bookRateStar from '../../assets/icons/Star.svg'
+import Card from '../../components/card/Card'
 
 
 
 class Cards extends Component {
-  
-  state = {
-    bookList: [],
-  }
-  
-  apiService = new ApiService();
-  
-
-
-  // получаю массив
-  componentDidMount() {
-    this.apiService.getSelectedBooks('Architecture')
-        .then(this.onBookListLoaded)
-        
+  constructor(props) {
+    super(props);
   }
 
-  // меняю состояние , перезаписываю массив
-  onBookListLoaded = (bookList) => {
-    this.setState({
-        bookList,
-    })
-  
-  }
-
- 
-
-  renderBooks(arr) {
-    const books =  arr.map((book) => { 
-        // Создаю для каждого элемента массива карточку
-        return (
-          <div 
-          className="card"
-          key={book.id}
-          >
-          <img className="book-thumbnail" src={book.thumbnail} alt="card thumbnail" />
-          <div className="card-info">
-            <p className="book-author">{book.author}</p>
-            <p className="book-title">{book.title}</p>
-            <div className="book-rate">
-              <div className="book-stars">
-                <img src={bookRateStar} alt="stars" />
-                <img src={bookRateStar} alt="stars" />
-                <img src={bookRateStar} alt="stars" />
-                <img src={bookRateStar} alt="stars" />
-              </div>
-              <p className="reviews-count">252 review</p>
-            </div>
-            <p className="book-discr">
-            {book.description}
-            </p>
-            <div className="book-price">$4.99</div>
-            <button className="card-button">buy now</button>
-          </div>
-        </div>
-        )
-    });
-    // А тут возвращаю весь массив с ренедером карточек
-    return (
-        <div className="cards-grid">
-            {books}
-        </div>
-    )
-    
-  }
-  
   render () {
+  
+    const { bookList } = this.props
 
-    const {bookList} = this.state;
-    const books = bookList ? this.renderBooks(bookList) : null;
- 
+    const renderBooks = (arr) => {
+      const books =  arr.map((book) => { 
+          // Создаю для каждого элемента массива карточку
+          return (
+            <Card 
+              key={book.id}
+              thumbnail={book.thumbnail}
+              author={book.author}
+              title={book.title}
+              description={book.description}
+
+            />
+          )
+      });
+      // А тут возвращаю весь массив с ренедером карточек
+      return (
+          <div className="cards-grid">
+              {books}
+          </div>
+      )
+      
+    }
+    
+
+
+
+    
+    const books = bookList && bookList.length > 0 ? renderBooks(bookList) : <p className="select-category">select a category</p>;
+    const showLoadMoreBtn = bookList && bookList.length > 0 ? <button className="load-more">Load more</button> : null
     return (
     <div className="cards-field">
+      <div className="cards-container">
         {books}
+      </div>
+      {showLoadMoreBtn}
     </div>
 
   )

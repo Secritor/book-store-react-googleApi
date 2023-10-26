@@ -10,7 +10,7 @@ class Card extends Component {
   constructor(props) {
     super(props)
 
-    this.updateBook();
+    // this.updateBook();
   }
 
 
@@ -31,31 +31,31 @@ class Card extends Component {
   apiService = new ApiService();
  
 
-  updateBook = () => {
-    const id = "9781108037129"  
-    const code = Math.floor(Math.random() * (9781108037129 - 9781108000000) + 9781108030000);
+  // updateBook = () => {
+  //   const id = "9781108037129"  
+  //   const code = Math.floor(Math.random() * (9781108037129 - 9781108000000) + 9781108030000);
 
-    this.apiService
-        .getBookByISBN(code)
-        .then(res => {
-          this.setState(res)
-        })
-    // получаю книги по коду isbn
+  //   this.apiService
+  //       .getBookByISBN(code)
+  //       .then(res => {
+  //         this.setState(res)
+  //       })
+  //   // получаю книги по коду isbn
         
-    // пытаюсь забрать из массива книги и вставить их поочередно в карточки
-        // .getBooks()
-        // .then(res => {
-        //   this.setState(res)
-        // });
+  //   // пытаюсь забрать из массива книги и вставить их поочередно в карточки
+  //       // .getBooks()
+  //       // .then(res => {
+  //       //   this.setState(res)
+  //       // });
 
 
       
 
-    // const book = books[Math.floor(Math.random() * books.length)];
-    // this.setState(book);
+  //   // const book = books[Math.floor(Math.random() * books.length)];
+  //   // this.setState(book);
 
         
-  }
+  // }
  
 
   render () {
@@ -64,7 +64,7 @@ class Card extends Component {
       author,
       description, 
       thumbnail
-     } = this.state;
+     } = this.props;
 
     return (
     <div className="card">

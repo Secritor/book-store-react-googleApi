@@ -39,17 +39,17 @@ class ApiService{
       for (let i = 0; i < res.items.length; i++) {
         this.books.push(this._transformBooks(res.items[i].volumeInfo));
       }
-
+      
       return this.books;
     }
 
     // перезаписываю массив удаляя все лишнее 
     _transformBooks = (books) => {
       return {
-            title: books.title,
-            author: books.authors[0],
+            title: books.title ? `${books.title.slice(0, 30)}...` : 'У этой книги нет названия',
+            author: books.authors && books.authors[0] ? books.authors[0] : 'У этой книги не указан автор',
             description: books.description ? `${books.description.slice(0, 90)}...` : 'There is no description for this book',
-            thumbnail: books.imageLinks.thumbnail,
+            thumbnail: books.imageLinks && books.imageLinks.thumbnail ? books.imageLinks.thumbnail : 0
       }
     }
   

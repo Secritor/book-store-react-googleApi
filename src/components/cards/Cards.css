@@ -16,4 +16,39 @@
     grid-column-gap: 76px;
     grid-row-gap: 96px;
 
+    margin-bottom: 100px;
+
+}
+
+
+.load-more {
+    width: 176px;
+    height: 45px;
+
+    border: 1px solid #4C3DB2;
+    font-family: Montserrat;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 10px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #4C3DB2;
+    /* margin-top: 100px;
+    margin-left: 372px; */
+
+    margin: 0 auto;
+    /* margin: 96px 523px 74px 743px; */
+
+}
+
+
+.select-category {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #1C2A39;
+    text-transform: uppercase;
 }
