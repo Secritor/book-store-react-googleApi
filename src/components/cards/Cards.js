@@ -1,27 +1,38 @@
 import React, { Component } from "react"
+import Card from '../../components/card/Card'
+import shortid from 'shortid';
 import '../cards/Cards.css'
 import '../card/Card.css';
-import ApiService from "../serviсes/ApiServices";
-import bookRateStar from '../../assets/icons/Star.svg'
-import Card from '../../components/card/Card'
+
 
 
 
 class Cards extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      cardsState: {},
+    };
+  }
+
+  handlePagination = () => {
+    this.props.onPaginationClick()
   }
 
   render () {
   
     const { bookList, onCardClick } = this.props
 
+
     const renderBooks = (arr) => {
-      const books =  arr.map((book, index) => { 
+      const books =  arr.map((book) => { 
+
+        const id = shortid.generate();
           // Создаю для каждого элемента массива карточку
           return (
             <Card 
-              key={index}
+              key={id}
+              id={id}
               thumbnail={book.thumbnail}
               author={book.author}
               title={book.title}
@@ -29,7 +40,7 @@ class Cards extends Component {
               ratingsCount={book.ratingsCount}
               averageRating={book.averageRating}
               saleInfo={book.saleInfo}
-              onCardClick={onCardClick}
+              onCardClick={(data) => onCardClick(data)}
             />
           )
       });
@@ -42,12 +53,8 @@ class Cards extends Component {
       
     }
     
-
-
-
-    
     const books = bookList && bookList.length > 0 ? renderBooks(bookList) : <p className="select-category">select a category</p>;
-    const showLoadMoreBtn = bookList && bookList.length > 0 ? <button className="load-more">Load more</button> : null
+    const showLoadMoreBtn = bookList && bookList.length > 0 ? <button onClick={this.handlePagination} className="load-more">Load more</button> : null
     
     return (
     <div className="cards-field">

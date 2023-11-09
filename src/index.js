@@ -4,7 +4,8 @@ import App from './components/app/App';
 import './index.css';
 import ApiService from './components/serviсes/ApiServices';
 const apiService = new ApiService()
-apiService.getBooks().then(res => console.log(res));
+// apiService.getBooks('0').then(res => console.log(res));
+// apiService.getBooks('6').then(res => console.log(res));
 
 
 

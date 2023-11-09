@@ -21,6 +21,8 @@ class App extends Component {
       activeCategory: null,
       bookList: [],
       addedToCart: 0,
+      itemsAddedToCart: [],
+      lazyLoadingCount: 1,
     }
   }
  
@@ -32,24 +34,45 @@ class App extends Component {
 
   apiService = new ApiService();
   
-
-  handleCategoryClick = async (category) => {
-    const books = await this.apiService.getSelectedBooks(category);
+  // callback для изменения state в родительском компоненте и дальнейшей передачи этого state в другие компоненты
+  handleCategoryClick = async (category, activeCategory ) => {
+    const books = await this.apiService.getSelectedBooks(category, this.state.lazyLoadingCount, activeCategory );
     this.setState((prevState) => ({
       selectedCategory: category,
       bookList: books,
-      activeCategory: prevState.selectedCategory === category ? null : category,
+      activeCategory: category,
+      lazyLoadingCount: prevState.lazyLoadingCount = 1,
     }));
   }
 
-
-  addedToCart = () => {
-    console.log('click');
-    this.setState({
-      addedToCart: this.state.addedToCart + 1,
-    })
+  // callback для изменения state в родительском компоненте и дальнейшей передачи этого state в другие компоненты
+  PaginationClick = async () => {
+    const books = await this.apiService.getPagination(this.state.activeCategory, this.state.lazyLoadingCount);
+    this.setState((prevState) => ({
+      lazyLoadingCount: prevState.lazyLoadingCount + 1,
+      bookList: books,
+    }));
   }
 
+  // callback для получения и добавлении книги в список который будет храниться в localstorage + изменения счетчика корзины
+  addedToCart = (book) => {
+    const updatedItemsAddedToCart = [...this.state.itemsAddedToCart, book];
+
+    this.setState((prevState) => ({
+      addedToCart: prevState.addedToCart + 1,
+      itemsAddedToCart: updatedItemsAddedToCart,
+    }), () => {
+      localStorage.setItem('itemsAddedToCart', JSON.stringify(updatedItemsAddedToCart));
+    });
+  }
+  // получаю из locastorage книги которые добавил в корзину и загружаю их в список при каждом монтировании компонента
+  componentDidMount() {
+    const itemsAddedToCart = JSON.parse(localStorage.getItem('itemsAddedToCart')) || [];
+    this.setState({
+      itemsAddedToCart: itemsAddedToCart,
+      addedToCart: itemsAddedToCart.length,
+    });
+  }
  
     render () {
       
@@ -57,7 +80,7 @@ class App extends Component {
       return (
         <div className='App'>
           
-          <Header addedToCart={this.state.addedToCart}/>
+          <Header className="nav"addedToCart={this.state.addedToCart}/>
           <Slider slides={this.slides}/>
             <div className='Shop'>
               <Filter
@@ -67,6 +90,9 @@ class App extends Component {
               <Cards
                bookList={this.state.bookList}
                onCardClick={this.addedToCart}
+               onPaginationClick={this.PaginationClick}
+               activeCategory={this.activeCategory}
+
                />
             </div>
           

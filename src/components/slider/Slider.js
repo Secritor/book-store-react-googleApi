@@ -1,10 +1,21 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import './Slider.css'
 import sliderArrow from '../../assets/icons/arrow.svg'
 
 const Slider = ({slides}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentSlide === slides.length - 1) {
+        setCurrentSlide(0);
+      } else {
+        setCurrentSlide(currentSlide + 1);
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [currentSlide, slides.length]);
+
   const handleJumpToSlide = (index) => {
     if (index === currentSlide) {
       setCurrentSlide(0);

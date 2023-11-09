@@ -8,12 +8,26 @@ button {
 }
 
 .header {
+    background-color: #ffff;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.header-items {
+    position: fixed;
+    z-index: 9999;
+    background-color: #ffff;
+    width: 1440px;
+}
+
+.header-wrapper {
+    height: 100px;
     display: flex;
     justify-content: space-between;
     align-content: center;
-    align-items: baseline;
-    max-width: 1120px;
-    margin: 50px auto;
+    align-items: center;
+    width: 1120px;
+    margin: 0 auto;
 }
 
 .Header-logo {
@@ -63,12 +77,8 @@ button {
 
 }
 
-.header-icons>button {
+.header-icons>button:nth-child(-n+2) {
     margin-right: 40px;
-}
-
-.header-icons>button:last-child {
-    margin-right: 0px;
 }
 
 .header-count {
@@ -90,27 +100,10 @@ button {
     text-align: center;
 
     color: #FFFFFF;
+    margin: 0;
+
+
 
 
 
 }
-
-/* .icon-user {
-    display: block;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-.icon-search {
-    display: block;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.icon-shop {
-    display: block;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-} */

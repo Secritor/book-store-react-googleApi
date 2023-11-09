@@ -11,14 +11,19 @@ class Card extends Component {
   }
 
   handleClick = () => {
-    if (!this.state.buttonClicked) {
-      this.setState({
-        buttonText: 'added',
-        buttonClicked: true,
-      });
-      this.props.onCardClick();
-    }
+      const { id, thumbnail, author, title, description, ratingsCount, averageRating, saleInfo } = this.props;
+      this.props.onCardClick({
+        id,
+        thumbnail,
+        author,
+        title,
+        description,
+        ratingsCount,
+        averageRating,
+        saleInfo
+      });   
   }
+  
 
   render () {
     const {
@@ -28,7 +33,7 @@ class Card extends Component {
       thumbnail,
       ratingsCount,
       averageRating,
-      saleInfo
+      saleInfo,
      } = this.props;
 
     return (
@@ -40,10 +45,6 @@ class Card extends Component {
             <div className="book-rate">
               <div className="book-stars">
                 {averageRating}
-                {/* <img src={bookRateStar} alt="stars" />
-                <img src={bookRateStar} alt="stars" />
-                <img src={bookRateStar} alt="stars" />
-                <img src={bookRateStar} alt="stars" /> */}
               </div>
               <p className="reviews-count">{ratingsCount}</p>
             </div>
@@ -51,10 +52,10 @@ class Card extends Component {
             {description}
             </p>
             <div className="book-price">{saleInfo}</div>
-            <button onClick={this.handleClick} className="card-button">{this.state.buttonText}</button>
+            <button onClick={this.handleClick } className="card-button">{this.state.buttonText}</button>
           </div>
         </div>
-  )
+    )
   }
   
 };

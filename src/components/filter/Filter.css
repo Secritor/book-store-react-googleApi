@@ -5,10 +5,8 @@ ul {
 
 .filter {
     position: absolute;
-    left: -162px;
+    left: -160px;
     top: 115px;
-    /* display: block;
-    content: ""; */
     width: 416px;
     height: 710px;
     margin-right: 65px;

@@ -15,13 +15,15 @@ p {
 }
 
 .slider {
+
     position: relative;
+    padding-top: 100px;
 }
 
 .slider-arrow-top {
     position: absolute;
     left: 1217px;
-    top: 100px;
+    top: 150px;
 
 
     display: block;
@@ -45,7 +47,7 @@ p {
 .slider-arrow-bottom {
     position: absolute;
 
-    top: 360px;
+    top: 410px;
     left: 1303px;
 
 
