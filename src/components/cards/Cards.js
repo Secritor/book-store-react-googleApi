@@ -10,29 +10,24 @@ import '../card/Card.css';
 class Cards extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cardsState: {},
-    };
   }
 
   handlePagination = () => {
     this.props.onPaginationClick()
   }
-
+  
   render () {
   
-    const { bookList, onCardClick } = this.props
+    const { bookList, onCardClick, buttonText } = this.props
 
-
+   
     const renderBooks = (arr) => {
       const books =  arr.map((book) => { 
-
-        const id = shortid.generate();
           // Создаю для каждого элемента массива карточку
           return (
-            <Card 
-              key={id}
-              id={id}
+            <Card
+              key={book.etag}
+              id={book.etag}
               thumbnail={book.thumbnail}
               author={book.author}
               title={book.title}
@@ -40,6 +35,7 @@ class Cards extends Component {
               ratingsCount={book.ratingsCount}
               averageRating={book.averageRating}
               saleInfo={book.saleInfo}
+              buttonText={buttonText}
               onCardClick={(data) => onCardClick(data)}
             />
           )

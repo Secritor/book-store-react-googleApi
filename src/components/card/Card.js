@@ -2,15 +2,20 @@ import React, {Component} from "react"
 import '../card/Card.css'
 import ApiService from "../serviсes/ApiServices";
 
-
-
 class Card extends Component {
   state = {
-    buttonText: 'buy now',
-    buttonClicked: false,
+    buttonText: null,
+    buttonIsCliled: null,
+  }
+  
+  componentDidMount() {
+    this.setState((prevState) => ({
+      buttonText: prevState = this.props.buttonText,
+    }))
   }
 
   handleClick = () => {
+     
       const { id, thumbnail, author, title, description, ratingsCount, averageRating, saleInfo } = this.props;
       this.props.onCardClick({
         id,
@@ -22,9 +27,14 @@ class Card extends Component {
         averageRating,
         saleInfo
       });   
+      this.setState((prevState) => ({
+        buttonText: prevState = "in the cart",
+        buttonIsCliled: prevState =  true,
+      }))
+      console.log('но я же кликнул почему нихуя не меняется...')
   }
   
-
+  
   render () {
     const {
       title,
@@ -52,7 +62,7 @@ class Card extends Component {
             {description}
             </p>
             <div className="book-price">{saleInfo}</div>
-            <button onClick={this.handleClick } className="card-button">{this.state.buttonText}</button>
+            <button onClick={this.handleClick} className="card-button">{this.state.buttonText}</button>
           </div>
         </div>
     )

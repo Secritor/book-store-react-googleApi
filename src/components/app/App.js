@@ -23,6 +23,8 @@ class App extends Component {
       addedToCart: 0,
       itemsAddedToCart: [],
       lazyLoadingCount: 1,
+      buttonText: 'buy now',
+      buttonIsCliled: false,
     }
   }
  
@@ -65,6 +67,7 @@ class App extends Component {
       localStorage.setItem('itemsAddedToCart', JSON.stringify(updatedItemsAddedToCart));
     });
   }
+
   // получаю из locastorage книги которые добавил в корзину и загружаю их в список при каждом монтировании компонента
   componentDidMount() {
     const itemsAddedToCart = JSON.parse(localStorage.getItem('itemsAddedToCart')) || [];
@@ -92,6 +95,7 @@ class App extends Component {
                onCardClick={this.addedToCart}
                onPaginationClick={this.PaginationClick}
                activeCategory={this.activeCategory}
+               buttonText={this.state.buttonText}
 
                />
             </div>
