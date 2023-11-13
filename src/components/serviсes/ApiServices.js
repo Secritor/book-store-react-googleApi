@@ -17,11 +17,12 @@ class ApiService{
       
       return await res.json();
     } 
-    // функция для проверки ответа с запроса
+   
     getBooks = async (startIndex) => {
       const res = await this.getResource(`${this._apiBase}"subject:Drama"&printType=books&startIndex=${startIndex}&maxResults=6&key=${this._apiKey}`);
       return res
     }
+    
     // получаю массив книг по категории
     getSelectedBooks = async (category) => {
       const res = await this.getResource(`${this._apiBase}"subject:${category}"&startIndex=0&maxResults=6&key=${this._apiKey}`); 
@@ -33,11 +34,7 @@ class ApiService{
      
       return this.books;
     }
-    // функцию getPagination переписать, сократить. Можно сделать проверку на пустой массив в getSelectedBooks, мб сработает. И будет одна функция.
-    // почему-то элементы дублируются, может быть дело в api или в том что цикл неправильно перебирает массив, добавив очищение массива, все равно встречаются дубли карточек
-    // т.е при каждом новом вызове пагинации не подгружается еще 6 новых карточек к 6и старым, цикл их перебирает и все равно появляются дубли. (возможно дело все таки не в цилке...)
-    // p.s сделал два разных запроса через getBooks(стартовый индекс), это api выдает копии. со стартовым индексом 0 и 6 было 2-3 копии в двух разных запросах.
-
+    
     getPagination = async (activeCategory, startIndex ) => {
       let index =  startIndex * 6
       const res = await this.getResource(`${this._apiBase}subject:${activeCategory}&printType=books&startIndex=${index}&maxResults=6&key=${this._apiKey}`);

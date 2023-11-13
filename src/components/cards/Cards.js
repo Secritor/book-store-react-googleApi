@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import Card from '../../components/card/Card'
-import shortid from 'shortid';
 import '../cards/Cards.css'
 import '../card/Card.css';
 
@@ -8,10 +7,6 @@ import '../card/Card.css';
 
 
 class Cards extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handlePagination = () => {
     this.props.onPaginationClick()
   }
@@ -20,7 +15,6 @@ class Cards extends Component {
   
     const { bookList, onCardClick, buttonText } = this.props
 
-   
     const renderBooks = (arr) => {
       const books =  arr.map((book) => { 
           // Создаю для каждого элемента массива карточку

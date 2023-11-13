@@ -28,7 +28,6 @@ ul {
     position: relative;
     margin: 23px 0px 23px 0px;
     display: flex;
-    /* justify-content: flex-start; */
 
     font-family: Montserrat;
     font-size: 12px;
@@ -61,8 +60,9 @@ ul {
 .filtet-item-active {
 
     position: relative;
-    /* margin-top: 23px; */
+
     display: flex;
+    cursor: pointer;
 
     font-family: Montserrat;
     font-size: 16px;

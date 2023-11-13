@@ -7,8 +7,8 @@ module.exports = {
   entry: './src/index.js', 
 
   output: {
-    filename: 'bundle.js', // Имя выходного файла сборки
-    path: path.resolve(__dirname, 'dist'), // Путь для выходного файла сборки
+    filename: 'bundle.js', 
+    path: path.resolve(__dirname, 'dist'), 
   },
 
   module: {
@@ -56,12 +56,12 @@ module.exports = {
 
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'), // Каталог для статики
+      directory: path.join(__dirname, 'dist'),
     },
     compress: true,
-    open: true, // Автоматически открывать браузер
+    open: true, 
     hot: true
   },
 
-  mode: 'development', // Режим сборки
+  mode: 'production', 
 };

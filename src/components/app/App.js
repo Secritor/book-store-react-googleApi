@@ -23,8 +23,6 @@ class App extends Component {
       addedToCart: 0,
       itemsAddedToCart: [],
       lazyLoadingCount: 1,
-      buttonText: 'buy now',
-      buttonIsCliled: false,
     }
   }
  
@@ -58,16 +56,26 @@ class App extends Component {
 
   // callback для получения и добавлении книги в список который будет храниться в localstorage + изменения счетчика корзины
   addedToCart = (book) => {
-    const updatedItemsAddedToCart = [...this.state.itemsAddedToCart, book];
-
-    this.setState((prevState) => ({
-      addedToCart: prevState.addedToCart + 1,
+    let updatedItemsAddedToCart = [...this.state.itemsAddedToCart];
+  
+    // Проверяем, есть ли уже такой товар в корзине
+    const index = updatedItemsAddedToCart.findIndex(item => item.id === book.id);
+    if (index !== -1) {
+      // Если товар уже есть в корзине, удаляем его
+      updatedItemsAddedToCart.splice(index, 1);
+    } else {
+      // Иначе добавляем товар в корзину
+      updatedItemsAddedToCart = [...updatedItemsAddedToCart, book];
+    }
+  
+    this.setState({
+      addedToCart: updatedItemsAddedToCart.length,
       itemsAddedToCart: updatedItemsAddedToCart,
-    }), () => {
+    }, () => {
       localStorage.setItem('itemsAddedToCart', JSON.stringify(updatedItemsAddedToCart));
     });
   }
-
+  
   // получаю из locastorage книги которые добавил в корзину и загружаю их в список при каждом монтировании компонента
   componentDidMount() {
     const itemsAddedToCart = JSON.parse(localStorage.getItem('itemsAddedToCart')) || [];
@@ -78,7 +86,6 @@ class App extends Component {
   }
  
     render () {
-      
       
       return (
         <div className='App'>
@@ -94,21 +101,14 @@ class App extends Component {
                bookList={this.state.bookList}
                onCardClick={this.addedToCart}
                onPaginationClick={this.PaginationClick}
-               activeCategory={this.activeCategory}
-               buttonText={this.state.buttonText}
-
+               activeCategory={this.state.activeCategory}
                />
             </div>
           
-      
-
         </div>
       );
     }
       
-  
- 
-
  
 }
 

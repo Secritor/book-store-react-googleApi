@@ -1,17 +1,13 @@
 import React, {Component} from "react"
 import '../card/Card.css'
-import ApiService from "../serviсes/ApiServices";
+
+
 
 class Card extends Component {
   state = {
-    buttonText: null,
-    buttonIsCliled: null,
-  }
-  
-  componentDidMount() {
-    this.setState((prevState) => ({
-      buttonText: prevState = this.props.buttonText,
-    }))
+    buttonText: 'buy now',
+    buttonIsCliled: false,
+    buttonStyle: 'card-button'
   }
 
   handleClick = () => {
@@ -28,10 +24,10 @@ class Card extends Component {
         saleInfo
       });   
       this.setState((prevState) => ({
-        buttonText: prevState = "in the cart",
-        buttonIsCliled: prevState =  true,
-      }))
-      console.log('но я же кликнул почему нихуя не меняется...')
+        buttonText: prevState.buttonIsCliled ? 'buy now' : 'in the cart',
+        buttonIsCliled: !prevState.buttonIsCliled,
+        buttonStyle: prevState.buttonIsCliled ? 'card-button' : 'in-the-cart'
+      }));
   }
   
   
@@ -62,7 +58,7 @@ class Card extends Component {
             {description}
             </p>
             <div className="book-price">{saleInfo}</div>
-            <button onClick={this.handleClick} className="card-button">{this.state.buttonText}</button>
+            <button onClick={this.handleClick} className={this.state.buttonStyle}>{this.state.buttonText}</button>
           </div>
         </div>
     )
