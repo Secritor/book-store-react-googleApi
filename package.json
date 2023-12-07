@@ -37,7 +37,7 @@
     "start": "react-scripts start",
     "start webpack": "webpack-dev-server --stats-children --mode development --open",
     "build webpack": "webpack --mode production",
-    "clean": "rd /s /q dist"
+    "clean": "rd /s /q docs"
   },
   "eslintConfig": {
     "extends": [
