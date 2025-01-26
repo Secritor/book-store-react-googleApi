@@ -4,60 +4,25 @@ import '../card/Card.css'
 
 
 class Card extends Component {
-  state = {
-    buttonText: 'buy now',
-    buttonIsCliled: false,
-    buttonStyle: 'card-button'
-  }
-
-  handleClick = () => {
-     
-      const { id, thumbnail, author, title, description, ratingsCount, averageRating, saleInfo } = this.props;
-      this.props.onCardClick({
-        id,
-        thumbnail,
-        author,
-        title,
-        description,
-        ratingsCount,
-        averageRating,
-        saleInfo
-      });   
-      this.setState((prevState) => ({
-        buttonText: prevState.buttonIsCliled ? 'buy now' : 'in the cart',
-        buttonIsCliled: !prevState.buttonIsCliled,
-        buttonStyle: prevState.buttonIsCliled ? 'card-button' : 'in-the-cart'
-      }));
-  }
-  
   
   render () {
-    const {
-      title,
-      author,
-      description, 
-      thumbnail,
-      ratingsCount,
-      averageRating,
-      saleInfo,
-     } = this.props;
 
     return (
     <div className="card">
-          <img className="book-thumbnail" src={thumbnail} alt="card thumbnail" />
+          <img className="book-thumbnail" src={null} alt="card thumbnail" />
           <div className="card-info">
-            <p className="book-author">{author}</p>
-            <p className="book-title">{title}</p>
+            <p className="book-author">{null}</p>
+            <p className="book-title">{null}</p>
             <div className="book-rate">
               <div className="book-stars">
-                {averageRating}
+                {null}
               </div>
-              <p className="reviews-count">{ratingsCount}</p>
+              <p className="reviews-count">{null}</p>
             </div>
             <p className="book-discr">
-            {description}
+            {null}
             </p>
-            <div className="book-price">{saleInfo}</div>
+            <div className="book-price">{null}</div>
             <button onClick={this.handleClick} className={this.state.buttonStyle}>{this.state.buttonText}</button>
           </div>
         </div>

@@ -7,8 +7,6 @@ import shopBagIcon from '../../assets/icons/shop-bag.svg';
 
 class Header extends Component {  
     render () {
-    const { addedToCart } = this.props
-    const cartItems = addedToCart > 0 ? <div className="header-count">{addedToCart}</div> : null
     return (
         <div className="header">
             <div className="header-items">
@@ -24,7 +22,6 @@ class Header extends Component {
                     <button className="icon-user"><img src={userIcon} alt="user" /></button>
                     <button className="icon-search"><img src={searchIcon} alt="user" /></button>
                     <button className="icon-shop"><img src={shopBagIcon} alt="user" /></button>
-                    {cartItems}
                 </div>
                 </div>
                 

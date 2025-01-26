@@ -30,16 +30,9 @@ class Filter extends Component {
     };
   }
 
-
-  
-  handleClick = (category) => {
-    this.props.onCategoryClick(category);
-  }
-
   render () {
-    const { activeCategory } = this.props
     const renderFilterItems = this.state.filterItems.map((category, index) =>
-      <li key={index} className={activeCategory === category ? "filtet-item-active" : "filter-item"} onClick={() => this.handleClick(category)}>{category}</li>
+      <li key={index} className={category}>{category}</li>
     )
       return (
         <div className="filter">
