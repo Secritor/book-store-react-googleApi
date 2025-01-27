@@ -10,29 +10,17 @@ import Cards from '../cards/Cards';
 // import imgBannerSecond from '../../assets/img/banner2.png';
 // import imgBannerThird from '../../assets/img/banner3.png';
 
-
-
-
-class App extends Component {
- 
-    render () {
-      
-      return (
-        <div className='App'>
-          
-          <Header className="nav"/>
-          {/* <Slider slides={null}/>
-            <div className='Shop'>
+const App = () => {
+  return (
+    <div className="App">
+      <Header className="nav" />
+      <Slider slides={null} />
+      {/* <div className='Shop'>
               <Filter/>
               <Cards/>
             </div> */}
-          
-        </div>
-      );
-    }
-      
- 
-}
+    </div>
+  );
+};
 
 export default App;
-
