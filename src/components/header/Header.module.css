@@ -10,27 +10,28 @@ button {
 .header {
     background-color: #ffff;
     max-width: 1440px;
-    margin: 0 auto;
+
 }
 
-.header-items {
+.header_items {
     position: fixed;
     z-index: 9999;
     background-color: #ffff;
-    width: 1440px;
+    width: 100%;
 }
 
-.header-wrapper {
+.header_wrapper{
     height: 100px;
     display: flex;
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    width: 1120px;
+    flex-wrap: wrap;
+    width: 100%;
     margin: 0 auto;
 }
 
-.Header-logo {
+.header_logo {
     font-family: Montserrat;
     font-size: 24px;
     font-weight: 700;
@@ -41,7 +42,7 @@ button {
     color: #1C2A39;
 }
 
-.Header-navigation>a {
+.header_navigation>a {
     font-family: Montserrat;
     font-size: 10px;
     font-weight: 700;
@@ -57,53 +58,38 @@ button {
 
 }
 
-.Header-navigation>a:hover {
+.header_navigation>a:hover {
     color: #1C2A39;
 }
 
-.Header-navigation>a:last-child {
+.header_navigation>a:last-child {
     margin-right: 0;
 }
 
 
-.active-navigation {
+.active_navigation {
     color: #1C2A39;
 }
 
-.header-icons {
+.header_icons {
     position: relative;
     display: flex;
 
 
 }
 
-.header-icons>button:nth-child(-n+2) {
+.header_icons>button:nth-child(-n+2) {
     margin-right: 40px;
 }
 
-.header-count {
-    position: absolute;
-    left: 125px;
-    top: 8px;
-    width: 13px;
-    height: 13px;
-    border: none;
-    border-radius: 50%;
-    background-color: #FF353A;
+@media (max-width: 679px) {
+    .header_wrapper{
+        margin-top: 20px;
+        flex-direction: column;
+    }
 
-    padding-top: 0.5px;
-    font-family: Montserrat;
-    font-size: 10px;
-    font-weight: 500;
-    line-height: 12px;
-    letter-spacing: 0em;
-    text-align: center;
-
-    color: #FFFFFF;
-    margin: 0;
-
-
-
-
+    .header_navigation>a {
+        margin-right: 20px;
+    }
 
 }
