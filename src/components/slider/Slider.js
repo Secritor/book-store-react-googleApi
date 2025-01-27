@@ -30,28 +30,28 @@ const Slider = () => {
           alt={`Slide ${currSlide + 1}`}
           className={style.slider_image}
         />
-      </div>
 
-      <button
-        className={style.slider_arrow_top}
-        onClick={prevSlide}
-        aria-label="Previous slide"
-      >
-        <div className={style.slider_arrow_top_content}>
-          <p>Change old book on new</p>
-          <img src={sliderArrow} alt="slider arrow up" />
-        </div>
-      </button>
-      <button
-        className={style.slider_arrow_bottom}
-        onClick={nextSlide}
-        aria-label="Next slide"
-      >
-        <div className={style.slider_arrow_bottom_content}>
-          <p>Top 100 books 2022</p>
-          <img src={sliderArrow} alt="slider arrow down" />
-        </div>
-      </button>
+        <button
+          className={style.slider_arrow_top}
+          onClick={prevSlide}
+          aria-label="Previous slide"
+        >
+          <div className={style.slider_arrow_top_content}>
+            <p className={style.botton_subtitle}>Change old book on new</p>
+            <img src={sliderArrow} alt="slider arrow up" />
+          </div>
+        </button>
+        <button
+          className={style.slider_arrow_bottom}
+          onClick={nextSlide}
+          aria-label="Next slide"
+        >
+          <div className={style.slider_arrow_bottom_content}>
+            <p className={style.botton_subtitle}>Top 100 books 2022</p>
+            <img src={sliderArrow} alt="slider arrow down" />
+          </div>
+        </button>
+      </div>
 
       <div className={style.slider_dots}>
         {slides.map((_, index) => (
