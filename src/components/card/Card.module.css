@@ -1,0 +1,155 @@
+.card {
+  display: flex;
+  align-items: center;
+}
+
+.card_info {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: left;
+  max-width: 203px;
+  margin-left: 36px;
+}
+
+.book_thumbnail {
+  width: 212px;
+  height: 300px;
+  box-shadow: 0px 24px 36px 0px #35315447;
+}
+
+.book_author {
+  font-family: Open Sans;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.book_title {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.book_rate {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.book_stars {
+  margin-right: 19px;
+}
+
+.reviews_count {
+  font-family: Open Sans;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-top: 3.5px;
+}
+
+.book_descr {
+  font-family: Open Sans;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #5c6a79;
+
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.book_price {
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.card_button {
+  border: 1px solid #4c3db2;
+  width: 176px;
+  height: 45px;
+
+  font-family: Montserrat;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 10px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #4c3db2;
+}
+
+.in_the_cart {
+  border: 1px solid #eeedf5;
+  width: 176px;
+  height: 45px;
+
+  font-family: Montserrat;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 10px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #5c6a79;
+}
+
+@media (max-width: 1180px) {
+  .book_thumbnail {
+    width: 180px;
+    height: 250px;
+    box-shadow: 0px 18px 24px 0px #35315447;
+  }
+
+  .book_author {
+    font-family: Open Sans;
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 10px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 2px;
+  }
+
+  .book_title {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 4px;
+  }
+
+  .card_button {
+    border: 1px solid #4c3db2;
+    width: 146px;
+    height: 45px;
+
+    font-family: Montserrat;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 10px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #4c3db2;
+  }
+}
+
+@media (max-width: 920px) {
+}

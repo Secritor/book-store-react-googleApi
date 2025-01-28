@@ -14,3 +14,10 @@
   display: flex;
   justify-content: flex-end;
 }
+
+@media (max-width: 1080px) {
+  .Shop {
+    display: flex;
+    flex-direction: column;
+  }
+}

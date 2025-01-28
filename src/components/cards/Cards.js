@@ -1,13 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Card from '../../components/card/Card';
-import '../cards/Cards.css';
-import '../card/Card.css';
+import style from './Cards.module.css';
+// import style from '../card/Card.module.css';
 
 const Cards = () => {
   return (
-    <div className="cards-field">
-      <div className="cards-container">cotainer</div>
-      <button>pagination btn</button>
+    <div className={style.cards_field}>
+      <div className={style.cards_grid}>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
+      {/* <button>pagination btn</button> */}
     </div>
   );
 };

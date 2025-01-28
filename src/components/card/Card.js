@@ -1,22 +1,20 @@
-import React, {Component} from 'react';
-import '../card/Card.css';
+import React from 'react';
+import style from './Card.module.css';
 
 const Card = () => {
   return (
-    <div className="card">
-      <img className="book-thumbnail" src={null} alt="card thumbnail" />
-      <div className="card-info">
-        <p className="book-author">{null}</p>
-        <p className="book-title">{null}</p>
-        <div className="book-rate">
-          <div className="book-stars">{null}</div>
-          <p className="reviews-count">{null}</p>
+    <div className={style.card}>
+      <img className={style.book_thumbnail} src={null} alt="card thumbnail" />
+      <div className={style.card_info}>
+        <p className={style.book_author}>Author</p>
+        <p className={style.book_title}>Book title</p>
+        <div className={style.book_rate}>
+          <div className={style.book_stars}>4 stars</div>
+          <p className={style.reviews_count}>50 reviews</p>
         </div>
-        <p className="book-discr">{null}</p>
-        <div className="book-price">{null}</div>
-        <button onClick={this.handleClick} className={this.state.buttonStyle}>
-          {this.state.buttonText}
-        </button>
+        <p className={style.book_descr}>some short description</p>
+        <div className={style.book_price}>40$</div>
+        <button className={style.card_button}>buy</button>
       </div>
     </div>
   );
