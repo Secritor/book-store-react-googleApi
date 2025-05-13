@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import style from './Filter.module.css';
+import {useState} from 'react';
+import style from 'styles/Filter.module.css';
 
 const Filter = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

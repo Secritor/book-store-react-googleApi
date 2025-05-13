@@ -91,17 +91,12 @@ ul {
   button {
     background-color: inherit;
   }
-  /* Стили для кнопки бургера */
+
   .burger_menu_container {
     display: block;
-    /* position: fixed;
-    top: 35%;
-    right: 94%;
-    z-index: 1000; */
   }
 
   .burger_menu {
-    /* background-color: #5c6a79; */
     color: rgb(0, 0, 0);
     border: none;
     padding: 10px 15px;
@@ -110,8 +105,7 @@ ul {
     border-radius: 5px;
   }
 
-  /* Стили для перекрывающего меню */
-  .overlay_menu {
+  /* .overlay_menu {
     position: fixed;
     top: 0;
     left: 0;
@@ -135,5 +129,5 @@ ul {
 
   .overlay_menu .filter_item {
     margin: 15px 0;
-  }
+  } */
 }

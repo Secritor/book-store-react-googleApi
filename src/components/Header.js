@@ -1,8 +1,7 @@
-import React from 'react';
-import style from './Header.module.css';
-import userIcon from '../../assets/icons/user.svg';
-import searchIcon from '../../assets/icons/search.svg';
-import shopBagIcon from '../../assets/icons/shop-bag.svg';
+import style from 'styles/Header.module.css';
+import userIcon from 'assets/icons/user.svg';
+import searchIcon from 'assets/icons/search.svg';
+import shopBagIcon from 'assets/icons/shop-bag.svg';
 
 const Header = () => {
   return (

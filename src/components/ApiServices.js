@@ -1,5 +1,5 @@
 import shortid from 'shortid';
-import noImage from '../../assets/img/no-image-cover.jpg';
+import noImage from 'assets/img/no-image-cover.jpg';
 
 class ApiService {
   _apiBase = 'https://www.googleapis.com/books/v1/volumes?q=';

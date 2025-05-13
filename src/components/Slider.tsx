@@ -1,24 +1,25 @@
-import React, {useState, useEffect} from 'react';
-import style from './Slider.module.css';
-import sliderArrow from '../../assets/icons/arrow.svg';
+import React, {useState} from 'react';
+import style from 'styles/Slider.module.css';
+import sliderArrow from 'assets/icons/arrow.svg';
 
-import image1 from '../../assets/img/banner.png';
-import image2 from '../../assets/img/banner2.png';
-import image3 from '../../assets/img/banner3.png';
+import image1 from 'assets/img/banner.png';
+import image2 from 'assets/img/banner2.png';
+import image3 from 'assets/img/banner3.png';
 
-const Slider = () => {
-  const slides = [image1, image2, image3];
-  const [currSlide, setCurrSlide] = useState(0);
+const slides: string[] = [image1, image2, image3];
 
-  const nextSlide = () => {
+const Slider: React.FC = () => {
+  const [currSlide, setCurrSlide] = useState<number>(0);
+
+  const nextSlide = (): void => {
     setCurrSlide((prev) => (prev + 1) % slides.length);
   };
 
-  const prevSlide = () => {
+  const prevSlide = (): void => {
     setCurrSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const goToSlide = (index) => {
+  const goToSlide = (index: number): void => {
     setCurrSlide(index);
   };
 
@@ -41,6 +42,7 @@ const Slider = () => {
             <img src={sliderArrow} alt="slider arrow up" />
           </div>
         </button>
+
         <button
           className={style.slider_arrow_bottom}
           onClick={nextSlide}
